@@ -1,0 +1,7 @@
+{
+    "nim.lintOnSave": true,
+    "nim.nimprettyMaxLineLen": 120,
+    "files.exclude": {
+        "**/*.exe": true
+    },
+}
