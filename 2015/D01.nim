@@ -1,14 +1,14 @@
-import sequtils, sugar, strutils, strformat
+import strutils, strformat
 
 let input = readFile("2015/D01.txt")
 
-var currFloor = 0
-var basementIdx = 0
+var currFloor: int
+var basementIdx: int
 for idx, direction in input:
     currFloor += (case direction:
-      of '(': +1
-      of ')': -1
-        else: raise newException(ValueError, "invalid direction"))
+    of '(': +1
+    of ')': -1
+    else: raise newException(ValueError, "invalid direction"))
     if basementIdx == 0 and currFloor == -1:
         basementIdx = idx
 

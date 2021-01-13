@@ -22,22 +22,22 @@ proc moveTo(dir: char, currLoc: Loc): Loc =
 # part 1
 proc part1(): seq[Loc] =
     var loc = (x: 0, y: 0)
-    var visited = @[loc]
+    result.add(loc)
     for dir in input:
         loc = moveTo(dir, loc)
-        visited.add(loc)
-    return visited
+        result.add(loc)
 
 let uniqVisits1 = part1().deduplicate.len
 echo &"Number of houses that received at least one present: {uniqVisits1}"
 
 # part 2
 proc part2(): seq[Loc] = 
-    var santaLoc = (x: 0, y: 0)
-    var roboLoc = (x: 0, y: 0)
-    var visited = @[santaLoc, roboLoc]
-    var flipFlop = true
-    var loc:Loc 
+    var 
+        santaLoc = (x: 0, y: 0)
+        roboLoc = (x: 0, y: 0)
+        visited = @[santaLoc, roboLoc]
+        flipFlop = true
+        loc:Loc 
     for dir in input:
         if flipFlop:
             loc = santaLoc

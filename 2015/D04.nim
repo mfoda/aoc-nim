@@ -3,8 +3,9 @@ import strutils, strformat, md5
 let input = "ckczppom"
 
 proc findHashPrefixN(prefix: string): int =
-    var hash: string
-    var index = 0
+    var 
+        hash: string
+        index: int
     while not hash.startsWith(prefix):
         hash = getMD5(input & index.intToStr)
         index += 1

@@ -17,10 +17,11 @@ for line in splitLines(input):
 
 # part 1
 proc calcWrappingPaper(d: Dimensions): int =
-    let sides = sorted([d.length, d.width, d.height])
-    let smallestSide = sides[0] * sides[1]
-    let surfaceArea = 2 * (d.length * d.width + d.width * d.height + d.height * d.length)
-    result = surfaceArea + smallestSide
+    let 
+        sides = sorted([d.length, d.width, d.height])
+        smallestSide = sides[0] * sides[1]
+        surfaceArea = 2 * (d.length * d.width + d.width * d.height + d.height * d.length)
+    surfaceArea + smallestSide
 
 var wrappingPaper = dimensions.map(calcWrappingPaper).foldl(a + b)
 echo &"Total square feet of wrapping paper to order: {wrappingPaper}"
@@ -28,10 +29,11 @@ echo &"Total square feet of wrapping paper to order: {wrappingPaper}"
 # part 2
 proc calcRibbon(d: Dimensions): int =
     # cubic ft of volume for bow
-    let sides = [d.length, d.width, d.height].sorted
-    let volume = sides.foldl(a * b)
-    let smallestPerimeter = 2 * sides[0] + 2 * sides[1]
-    result = volume + smallestPerimeter
+    let 
+        sides = [d.length, d.width, d.height].sorted
+        volume = sides.foldl(a * b)
+        smallestPerimeter = 2 * sides[0] + 2 * sides[1]
+    volume + smallestPerimeter
 
 var ribbon = dimensions.map(calcRibbon).foldl(a + b)
 echo &"Total feet of ribbon to order: {ribbon}"
