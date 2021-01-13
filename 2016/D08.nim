@@ -2,8 +2,7 @@ import strutils, nre, sequtils, sugar, strformat
 
 type 
     Screen = array[6, array[50, bool]]
-    Action = enum
-        aRect, aRotRow, aRotCol
+    Action = enum aRect, aRotRow, aRotCol
     Instruction = object
         action: Action
         a, b: int
@@ -16,16 +15,15 @@ proc rect(screen: var Screen, a, b: int) =
 proc rotRow(screen: var Screen, row, amt: int) =
     var rowCpy = screen[row]
     for i in 0..rowCpy.high:
-        var rotIdx = (i + amt) mod rowCpy.len 
+        let rotIdx = (i + amt) mod rowCpy.len 
         rowCpy[rotIdx] = screen[row][i]
     screen[row] = rowCpy
 
 proc rotCol(screen: var Screen, col, amt: int) =
     var colCpy = collect(newSeq):
-        for row in screen:
-            row[col]
+        for row in screen: row[col]
     for i in 0..colCpy.high:
-        var rotIdx = (i + amt) mod colCpy.len 
+        let rotIdx = (i + amt) mod colCpy.len 
         colCpy[rotIdx] = screen[i][col]
     for i in 0..screen.high:
         screen[i][col] = colCpy[i] 
